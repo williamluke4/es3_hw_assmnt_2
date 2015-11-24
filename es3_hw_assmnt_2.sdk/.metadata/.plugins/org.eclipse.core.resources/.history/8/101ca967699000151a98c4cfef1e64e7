@@ -1,0 +1,93 @@
+void flash_ped(){
+    if((ped_countdown<=20) && (ped_countdown%2)==0 && ped_button == true){
+                if (Ped_Light == OFF)
+                {
+                    Ped_Light = YELLOW;
+                }
+                else{Ped_Light = OFF;}
+    }
+}
+void next_state(){
+ //Running every Second
+
+    if(TR1_Red == RED && TR2_Red == RED && ped_button == true ){
+            Ped_Light = YELLOW;
+
+
+            display = ped_countdown/10;
+
+            ped_countdown = ped_countdown -1;
+            if(ped_countdown == 0){
+            	XGpio_DiscreteWrite(&LED_OUT,1, 0);
+                ped_button = false;
+                Ped_Light = OFF;
+            }
+    }
+
+    else {
+        switch(counter){
+                case 0:// TR1:Yellow
+                    TR2_Red = RED;
+                    TR1_Red = RED;
+                    TR2_Yellow = OFF;
+                    TR1_Green = OFF;
+                    break;
+                case 20: //TR1:Green
+                    TR1_Yellow = YELLOW;
+                    TR1_Red = OFF;
+                    break;
+                case 40: //TR1:Yellow
+                    TR1_Yellow = OFF;
+                    TR1_Green = GREEN;
+                    break;
+                case 60: //TR1:Red
+                    TR1_Green = OFF;
+                    TR1_Yellow = YELLOW;
+                    break;
+                case 80:// TR2:Yellow
+                    TR1_Red = RED;
+                    TR1_Yellow = OFF;
+                    break;
+                case 100: //TR2:Green
+                    TR2_Yellow = YELLOW;
+                    TR2_Red = OFF;
+                    break;
+                case 120: //TR2:Yellow
+                    TR2_Yellow = OFF;
+                    TR2_Green = GREEN;
+                    break;
+                case 140: //TR2:Red
+                    TR2_Green = OFF;
+                    TR2_Yellow = YELLOW;
+                    break;
+                default:
+                    break;
+            }
+        counter = counter + 1;
+    }
+    if(counter==150){counter = 0;}
+}
+
+
+void hwTimerISR(void *CallbackRef){
+    interruptServiced = FALSE;
+    interruptCounter++;
+    displayDigit();
+
+    if (interruptCounter == 25) //Running Every 0.1
+    {
+
+        timer = timer + 1;
+
+        next_state(); //Will run every Second
+
+        interruptCounter = 0;
+        flash_ped();
+
+
+        interruptServiced = TRUE;
+        displayDigit();
+    }
+
+    return;
+}

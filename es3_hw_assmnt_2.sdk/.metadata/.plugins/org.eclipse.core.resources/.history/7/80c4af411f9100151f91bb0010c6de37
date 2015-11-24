@@ -1,0 +1,120 @@
+#include "interrupt_func.h"	// Added for 7-segment definitions
+#include "xil_types.h"
+#include <stdbool.h> //For Boolean Expressions
+#include "seg7_display.h"
+
+bool ped_button = false;
+
+volatile int * TR1_Red = OFF, TR1_Yellow = OFF, TR1_Green = OFF;
+volatile int * TR2_Red = OFF, TR2_Yellow = OFF, TR2_Green = OFF;
+volatile int * Ped_Light = OFF;
+volatile u8 interruptCounter = 0;
+
+interruptServiced = FALSE;
+
+u16 counter = 0;
+u16 display = 0;
+u16 timer = 0;
+u8 ped_countdown = 0;
+
+
+void pointer(volatile int* TR1_Red_P ,volatile int*TR1_Yellow_P ,volatile int* TR1_Green_P,volatile int* TR2_Red_P ,volatile int*TR2_Yellow_P ,volatile int* TR2_Green_P,volatile int* Ped_Light_P){
+	TR1_Red = TR1_Red_P;
+}
+// Hardware timer interrupt service routine
+void hwTimerISR(void *CallbackRef){
+    interruptServiced = FALSE;
+    interruptCounter++;
+    displayDigit();
+
+    if (interruptCounter == 25) //Running Every 0.1
+    {
+
+        timer = timer + 1;
+
+        next_state(); //Will run every Second
+
+        interruptCounter = 0;
+        flash_ped();
+
+
+        interruptServiced = TRUE;
+        displayDigit();
+    }
+
+    return;
+}
+void flash_ped(){
+    if((ped_countdown<=20) && (ped_countdown%2)==0 && ped_button == true){
+                if (Ped_Light == OFF)
+                {
+                    Ped_Light = YELLOW;
+                }
+                else{Ped_Light = OFF;}
+    }
+}
+void next_state(){
+ //Running every Second
+
+    if(TR1_Red == RED && TR2_Red == RED && ped_button == true ){
+            Ped_Light = YELLOW;
+
+
+            display = ped_countdown/10;
+
+            ped_countdown = ped_countdown -1;
+            if(ped_countdown == 0){
+                ped_button = false;
+                Ped_Light = OFF;
+            }
+    }
+
+    else {
+    	if((counter%10)==0){
+    		display = 1;
+    	}
+    	if((counter%20)==0){
+    		display = 2;
+    	}
+        switch(counter){
+                case 0:// TR1:Yellow
+                    *TR2_Red = RED;
+                    *TR1_Red = RED;
+                    *TR2_Yellow = OFF;
+                    *TR1_Green = OFF;
+                    break;
+                case 20: //TR1:Green
+                    TR1_Yellow = YELLOW;
+                    TR1_Red = OFF;
+                    break;
+                case 40: //TR1:Yellow
+                    TR1_Yellow = OFF;
+                    TR1_Green = GREEN;
+                    break;
+                case 60: //TR1:Red
+                    TR1_Green = OFF;
+                    TR1_Yellow = YELLOW;
+                    break;
+                case 80:// TR2:Yellow
+                    TR1_Red = RED;
+                    TR1_Yellow = OFF;
+                    break;
+                case 100: //TR2:Green
+                    TR2_Yellow = YELLOW;
+                    TR2_Red = OFF;
+                    break;
+                case 120: //TR2:Yellow
+                    TR2_Yellow = OFF;
+                    TR2_Green = GREEN;
+                    break;
+                case 140: //TR2:Red
+                    TR2_Green = OFF;
+                    TR2_Yellow = YELLOW;
+                    break;
+                default:
+                    break;
+            }
+        counter = counter + 1;
+    }
+    if(counter==160){counter = 0;}
+}

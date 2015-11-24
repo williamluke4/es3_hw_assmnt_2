@@ -1,0 +1,75 @@
+
+#include <stdio.h>
+#include "platform.h"
+#include "xil_types.h"
+#include "gpio_init.h"
+#include <stdlib.h>
+#include <stdbool.h> //For Boolean Expressions
+#include "seg7_display.h"
+#include "interrupt_func.h"
+
+
+
+
+u8 status;
+
+u16 slideSwitchIn = 0;
+u16 pushBtnRightIn = 0;
+
+
+
+
+
+int main(){
+	/*##########################################################################
+	 *#########################     Setup    ###################################
+	 *########################################################################*/
+    init_platform();
+    // Initialize the GPIOs
+        status = initGpio();
+        if (status != XST_SUCCESS) {
+            print("GPIOs initialization failed!\n\r");
+            cleanup_platform();
+            return (0);
+        }
+        // Setup the Interrupt System
+        status = setUpInterruptSystem();
+        if (status != XST_SUCCESS) {
+            print("Interrupt system setup failed!\n\r");
+            cleanup_platform();
+            return (0);
+        }
+
+/*##########################################################################
+ *###########################   Main Loop   ################################
+ *########################################################################*/
+
+        while (1){
+            XGpio_DiscreteWrite(&REGION_0_COLOUR,1, TR1_Red);
+            XGpio_DiscreteWrite(&REGION_1_COLOUR,1, TR1_Yellow);
+            XGpio_DiscreteWrite(&REGION_2_COLOUR,1, TR1_Green);
+            XGpio_DiscreteWrite(&REGION_3_COLOUR,1, TR2_Red);
+            XGpio_DiscreteWrite(&REGION_4_COLOUR,1, TR2_Yellow);
+            XGpio_DiscreteWrite(&REGION_5_COLOUR,1, TR2_Green);
+            XGpio_DiscreteWrite(&REGION_10_COLOUR,1, Ped_Light);
+
+            while (interruptServiced == FALSE){
+            	pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
+            	if (pushBtnRightIn == 1) {
+            		// Wait for the button to be released
+            		while (pushBtnRightIn == 1){
+            			pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
+            			XGpio_DiscreteWrite(&LED_OUT,1, 65535);
+            			/* Call the method to display counter
+            			* This is done here to avoid flickering
+            			*/
+            			ped_button = true;//Ped Button Activated
+            			ped_countdown = 50;
+            		}
+            	}
+            	displayNumber(display);
+            }
+        }
+        cleanup_platform();
+        return (0);
+}

@@ -1,0 +1,24 @@
+/*
+ * interrupt_func.h
+ *
+ *  Created on: 22 Nov 2015
+ *      Author: Will
+ */
+
+#ifndef INTERRUPT_FUNC_H_
+#define INTERRUPT_FUNC_H_
+
+#define RED 0xF00
+#define GREEN 0x0F0
+#define YELLOW  0xFF0
+#define	OFF  0xFFF
+
+
+
+void next_state();
+void flash_ped();
+
+volatile int interruptServiced;
+
+void pointer(volatile int*,volatile int*,volatile int*,volatile int*,volatile int*,volatile int*,volatile int*);
+#endif /* INTERRUPT_FUNC_H_ */

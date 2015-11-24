@@ -1,0 +1,22 @@
+void hwTimerISR(void *CallbackRef){
+    interruptServiced = FALSE;
+    interruptCounter++;
+    displayDigit();
+
+    if (interruptCounter == 25) //Running Every 0.1
+    {
+
+        timer = timer + 1;
+
+        next_state(); //Will run every Second
+
+        interruptCounter = 0;
+        flash_ped();
+
+
+        interruptServiced = TRUE;
+        displayDigit();
+    }
+
+    return;
+}

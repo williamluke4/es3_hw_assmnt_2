@@ -1,0 +1,32 @@
+/*
+ * interrupt_func.h
+ *
+ *  Created on: 22 Nov 2015
+ *      Author: Will
+ */
+
+#ifndef INTERRUPT_FUNC_H_
+#define INTERRUPT_FUNC_H_
+
+#define RED 0xF00
+#define GREEN 0x0F0
+#define YELLOW  0xFF0
+#define	OFF  0xFFF
+
+bool ped_button = false;
+
+volatile u16 TR1_Red = OFF, TR1_Yellow = OFF, TR1_Green = OFF;
+volatile u16 TR2_Red = OFF, TR2_Yellow = OFF, TR2_Green = OFF;
+volatile u16 Ped_Light = OFF;
+volatile u8 interruptCounter = 0;
+volatile u8 interruptServiced = FALSE;
+
+void next_state();
+void flash_ped();
+
+u16 counter = 0;
+u16 display = 0;
+u16 timer = 0;
+u8 ped_countdown = 0;
+
+#endif /* INTERRUPT_FUNC_H_ */

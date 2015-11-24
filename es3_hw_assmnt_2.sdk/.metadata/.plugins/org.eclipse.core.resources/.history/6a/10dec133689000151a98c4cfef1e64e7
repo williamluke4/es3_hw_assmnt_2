@@ -1,0 +1,14 @@
+/*
+ * timer_interrupt_func.h
+ *
+ *  Created on: 18 Nov 2015
+ *      Author: Will
+ */
+
+#ifndef TIMER_INTERRUPT_FUNC_H_
+#define TIMER_INTERRUPT_FUNC_H_
+
+volatile u8 interruptCounter = 0;
+volatile u8 interruptServiced = FALSE;
+
+#endif /* TIMER_INTERRUPT_FUNC_H_ */

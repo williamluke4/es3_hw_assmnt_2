@@ -1,0 +1,43 @@
+/*
+ * gpio.init.c
+ *
+ *  Created on: 18 Nov 2015
+ *      Author: Will
+ */
+#include "gpio_init.h"
+
+XStatus initGpio(void)
+{
+	XStatus status;
+
+	/* Note that all the Xgpio objects initialized here
+	 * have been declared in the gpio_init.h header file,
+	 * but make sure you confirm that the IDs used to initialize
+	 * the GPIOs here are correct
+	 */
+	status = XGpio_Initialize(&VGA_REGION, 10);
+	if (status != XST_SUCCESS)
+	{
+		return XST_FAILURE;
+	}
+
+	status = XGpio_Initialize(&VGA_COLOUR, 8);
+	if (status != XST_SUCCESS)
+	{
+		return XST_FAILURE;
+	}
+
+	//Initializing Slide Switches
+	status = XGpio_Initialize(&SLIDE_SWITCHES, 7);
+	if (status != XST_SUCCESS){
+		return XST_FAILURE;
+	}
+	status = XGpio_Initialize(&LED_OUT, 2);
+	if (status != XST_SUCCESS){
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+
+

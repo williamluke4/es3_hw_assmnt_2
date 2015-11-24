@@ -1,0 +1,72 @@
+#include "seg7_display.h"
+
+void hwTimerISR(void *CallbackRef)
+{
+	displayDigit();
+}
+
+
+
+
+
+
+
+volatile s32 add_result;	// When a variable is accessed by both
+			  		  		// the main code and an ISR, the keyword volatile
+			  		  		// has to be used to prevent the compiler from
+			  		  		// optimizing useful and intended codes away
+
+
+
+
+// Interrupt counter variable declaration and initial definition
+volatile u8 interruptCounter = 0;
+
+int main()
+{
+    init_platform();
+
+	// Setup the interrupt system
+    setUpInterruptSystem();
+
+    while(1)
+    {
+    	valuesReceived = FALSE;
+    	/*
+    	 * << Write the code to receive value1,
+    	 *    value2 and the operation type here >>
+    	 */
+
+		// Wait for interrupt to be serviced
+		while (interruptServiced == FALSE);
+    }
+
+    cleanup_platform();
+    return 0;
+}
+
+// Hardware timer interrupt service routine
+void hwTimerISR(void *CallbackRef)
+{
+	interruptServiced = FALSE;
+	interruptCounter++;
+
+	if (interruptCounter == 40)
+	{
+		interruptCounter = 0;
+
+		/*
+		 * << Write here the code to check if values and operation type,
+		 * 	  have been received and perform the arihmetic operations.
+		 *    Otherwise, print error message >>
+		 */
+
+		interruptServiced = TRUE;
+	}
+
+	return;
+}
+
+/*
+ * Put the arithmetic operations method declarations here
+ */

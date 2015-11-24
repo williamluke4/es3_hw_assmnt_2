@@ -1,0 +1,184 @@
+
+#include <stdio.h>
+#include "platform.h"
+#include "xil_types.h"
+#include "gpio_init.h"
+#include <stdlib.h>
+#include "seg7_display.h"
+
+#define RED 0xF00
+#define GREEN 0x0F0
+#define YELLOW  0xFF0
+#define	OFF  0xFFF
+
+u8 ped_countdown = 0;
+u8 status;
+
+u16 slideSwitchIn = 0;
+u16 pushBtnRightIn = 0;
+u16 counter = 0;
+u16 display = 0;
+u16 timer = 0;
+
+u8 ped_button = FALSE;
+
+volatile u16 TR1_Red = OFF, TR1_Yellow = OFF, TR1_Green = OFF;
+volatile u16 TR2_Red = OFF, TR2_Yellow = OFF, TR2_Green = OFF;
+volatile u16 Ped_Light = OFF;
+volatile u8 interruptCounter = 0;
+volatile u8 interruptServiced = FALSE;
+
+void next_state();
+void flash_ped();
+
+// Hardware timer interrupt service routine
+void hwTimerISR(void *CallbackRef){
+    interruptServiced = FALSE;
+    interruptCounter++;
+    displayDigit();
+
+    if (interruptCounter == 25) //Running Every 0.1
+    {
+
+        timer = timer + 1;
+
+        next_state(); //Will run every Second
+
+        interruptCounter = 0;
+        flash_ped();
+
+
+        interruptServiced = TRUE;
+        displayDigit();
+    }
+
+    return;
+}
+void flash_ped(){
+    if((ped_countdown<=20) && (ped_countdown%2)==0 && ped_button == true){
+                if (Ped_Light == OFF)
+                {
+                    Ped_Light = YELLOW;
+                }
+                else{Ped_Light = OFF;}
+    }
+}
+void next_state(){
+ //Running every Second
+
+    if(TR1_Red == RED && TR2_Red == RED && ped_button == TRUE ){
+            Ped_Light = YELLOW;
+
+
+            display = ped_countdown/10;
+
+            ped_countdown = ped_countdown -1;
+            if(ped_countdown == 0){
+            	XGpio_DiscreteWrite(&LED_OUT,1, 0);
+                ped_button = false;
+                Ped_Light = OFF;
+            }
+    }
+
+    else {
+    	if((counter%10)==0){
+    		display = 1;
+    	}
+    	if((counter%20)==0){
+    		display = 2;
+    	}
+        switch(counter){
+                case 0:// TR1:Yellow
+                    TR2_Red = RED;
+                    TR1_Red = RED;
+                    TR2_Yellow = OFF;
+                    TR1_Green = OFF;
+                    break;
+                case 20: //TR1:Green
+                    TR1_Yellow = YELLOW;
+                    TR1_Red = OFF;
+                    break;
+                case 40: //TR1:Yellow
+                    TR1_Yellow = OFF;
+                    TR1_Green = GREEN;
+                    break;
+                case 60: //TR1:Red
+                    TR1_Green = OFF;
+                    TR1_Yellow = YELLOW;
+                    break;
+                case 80:// TR2:Yellow
+                    TR1_Red = RED;
+                    TR1_Yellow = OFF;
+                    break;
+                case 100: //TR2:Green
+                    TR2_Yellow = YELLOW;
+                    TR2_Red = OFF;
+                    break;
+                case 120: //TR2:Yellow
+                    TR2_Yellow = OFF;
+                    TR2_Green = GREEN;
+                    break;
+                case 140: //TR2:Red
+                    TR2_Green = OFF;
+                    TR2_Yellow = YELLOW;
+                    break;
+                default:
+                    break;
+            }
+        counter = counter + 1;
+    }
+    if(counter==160){counter = 0;}
+}
+
+
+int main(){
+	/*##########################################################################
+	 *#########################     Setup    ###################################
+	 *########################################################################*/
+    init_platform();
+    // Initialize the GPIOs
+        status = initGpio();
+        if (status != XST_SUCCESS) {
+            print("GPIOs initialization failed!\n\r");
+            cleanup_platform();
+            return (0);
+        }
+        // Setup the Interrupt System
+        status = setUpInterruptSystem();
+        if (status != XST_SUCCESS) {
+            print("Interrupt system setup failed!\n\r");
+            cleanup_platform();
+            return (0);
+        }
+
+/*###########################   Main Loop   ###############################*/
+
+        while (1){
+            XGpio_DiscreteWrite(&REGION_0_COLOUR,1, TR1_Red);
+            XGpio_DiscreteWrite(&REGION_1_COLOUR,1, TR1_Yellow);
+            XGpio_DiscreteWrite(&REGION_2_COLOUR,1, TR1_Green);
+            XGpio_DiscreteWrite(&REGION_3_COLOUR,1, TR2_Red);
+            XGpio_DiscreteWrite(&REGION_4_COLOUR,1, TR2_Yellow);
+            XGpio_DiscreteWrite(&REGION_5_COLOUR,1, TR2_Green);
+            XGpio_DiscreteWrite(&REGION_10_COLOUR,1, Ped_Light);
+
+            while (interruptServiced == FALSE){
+            	pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
+            	if ((pushBtnRightIn == 1) && (ped_button==false)) {
+            		// Wait for the button to be released and checks if it has been pressed already
+            		while (pushBtnRightIn == 1){
+            			pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
+            			XGpio_DiscreteWrite(&LED_OUT,1, 65535);
+            			/* Call the method to display counter
+            			* This is done here to avoid flickering
+            			*/
+            			ped_button = true;//Ped Button Activated
+            			ped_countdown = 50;
+            		}
+            	}
+            	displayNumber(display);
+            }
+        }
+        cleanup_platform();
+        return (0);
+}

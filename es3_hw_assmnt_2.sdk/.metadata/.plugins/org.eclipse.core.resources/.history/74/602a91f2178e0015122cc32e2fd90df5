@@ -1,0 +1,34 @@
+#include "seg7_display.h"
+
+
+// Interrupt counter variable declaration and initial definition
+volatile u8 interruptCounter = 0;
+volatile u8 interruptServiced = FALSE;
+
+
+// Hardware timer interrupt service routine
+void hwTimerISR(void *CallbackRef)
+{
+	displayDigit();
+	interruptServiced = FALSE;
+	interruptCounter++;
+
+	if (interruptCounter == 40)
+	{
+		interruptCounter = 0;
+
+		/*
+		 * << Write here the code to check if values and operation type,
+		 * 	  have been received and perform the arihmetic operations.
+		 *    Otherwise, print error message >>
+		 */
+
+		interruptServiced = TRUE;
+	}
+
+	return;
+}
+
+/*
+ * Put the arithmetic operations method declarations here
+ */
