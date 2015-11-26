@@ -54,14 +54,18 @@ void flash_ped(){
 		if (Ped_Light == OFF)
 		{
 			Ped_Light = YELLOW;
+			printf("Yellow \r\n");
 
 		}
 		else{
 			Ped_Light = OFF;
+			printf("OFF \r\n");
+
 		}
     }
-    else if (ped_countdown>20){
+    else{
     	Ped_Light = GREEN;
+    	printf("GREEN \r\n");
 
     }
 

@@ -650,3 +650,49 @@ java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT P
 13:36:45 INFO  : Processor reset is completed for microblaze_0
 13:38:20 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
 13:38:21 INFO  : Processor reset is completed for microblaze_0
+16:20:59 INFO  : Launching XSDB server: xsdb.bat F:/Programs/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+16:21:03 INFO  : XSDB server has started successfully.
+16:21:04 INFO  : Processing command line option -hwspec C:/Users/Will/Desktop/Assessment_2_Traffic_Light/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf.
+16:21:04 INFO  : Checking for hwspec changes in the project top_hw_platform_0.
+18:31:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:31:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Basys3 210183712058A" && level==0} -index 0' command is executed.
+18:31:56 INFO  : FPGA configured successfully with bitstream "C:/Users/Will/Desktop/Assessment_2_Traffic_Light/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top_hw_platform_0/download.bit"
+18:32:43 INFO  : Processor reset is completed for microblaze_0
+18:33:24 INFO  : Processor reset is completed for microblaze_0
+18:33:58 INFO  : Processor reset is completed for microblaze_0
+18:34:21 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:34:23 INFO  : Processor reset is completed for microblaze_0
+18:37:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:37:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Basys3 210183712058A" && level==0} -index 0' command is executed.
+18:37:24 INFO  : FPGA configured successfully with bitstream "C:/Users/Will/Desktop/Assessment_2_Traffic_Light/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top_hw_platform_0/download.bit"
+18:43:31 INFO  : Processor reset is completed for microblaze_0
+18:43:51 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:43:52 INFO  : Processor reset is completed for microblaze_0
+18:44:43 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:44:44 INFO  : Processor reset is completed for microblaze_0
+18:45:32 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:45:33 INFO  : Processor reset is completed for microblaze_0
+18:45:43 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:45:45 INFO  : Processor reset is completed for microblaze_0
+18:46:44 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:46:46 INFO  : Processor reset is completed for microblaze_0
+18:47:31 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:47:33 INFO  : Processor reset is completed for microblaze_0
+18:48:08 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:48:10 INFO  : Processor reset is completed for microblaze_0
+18:48:49 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:48:50 INFO  : Processor reset is completed for microblaze_0
+18:49:35 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:49:36 INFO  : Processor reset is completed for microblaze_0
+18:50:50 INFO  : Processor reset is completed for microblaze_0
+18:51:49 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:51:50 INFO  : Processor reset is completed for microblaze_0
+18:52:29 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:52:30 INFO  : Processor reset is completed for microblaze_0
+18:53:24 INFO  : Processor reset is completed for microblaze_0
+18:54:58 INFO  : Processor reset is completed for microblaze_0
+18:55:36 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:55:37 INFO  : Processor reset is completed for microblaze_0
+18:57:09 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:57:10 INFO  : Processor reset is completed for microblaze_0
+20:14:18 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 

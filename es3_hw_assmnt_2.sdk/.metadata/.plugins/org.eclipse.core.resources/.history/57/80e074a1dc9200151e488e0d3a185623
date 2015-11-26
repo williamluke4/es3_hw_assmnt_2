@@ -50,19 +50,20 @@ void hwTimerISR(void *CallbackRef){
 void flash_ped(){
 
 	if((ped_countdown<=20) && ((ped_countdown%2)==0)){
-
-		if (Ped_Light == OFF)
+		printf(Ped_Light);
+		if (Ped_Light == 0xFFF)
 		{
 			Ped_Light = YELLOW;
 
+
 		}
-		else{
+		else if(Ped_Light == 0xFF0){
 			Ped_Light = OFF;
+
 		}
     }
-    else if (ped_countdown>20){
+    else{
     	Ped_Light = GREEN;
-
     }
 
 

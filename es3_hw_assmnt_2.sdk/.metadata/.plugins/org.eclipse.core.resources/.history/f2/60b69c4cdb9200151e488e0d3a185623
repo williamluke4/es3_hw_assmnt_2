@@ -49,20 +49,17 @@ void hwTimerISR(void *CallbackRef){
 }
 void flash_ped(){
 
-	if((ped_countdown<=20) && ((ped_countdown%2)==0)){
-
+	if((ped_countdown<=20) && (ped_countdown%2)==0){
 		if (Ped_Light == OFF)
 		{
 			Ped_Light = YELLOW;
-
 		}
 		else{
 			Ped_Light = OFF;
 		}
     }
-    else if (ped_countdown>20){
+    else{
     	Ped_Light = GREEN;
-
     }
 
 
@@ -168,12 +165,12 @@ int main(){
             XGpio_DiscreteWrite(&REGION_5_COLOUR,1, TR2_Green);
             XGpio_DiscreteWrite(&REGION_10_COLOUR,1, Ped_Light);
             displayNumber(display);
-
             while (interruptServiced == FALSE){
 
             	pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
             	if ((pushBtnRightIn == 1) && (ped_button==FALSE)) {
-
+            		printf("Hello World\n\r");
+            		printf("Hello World\n\r");
             		// Wait for the button to be released and checks if it has been pressed already
             		while (pushBtnRightIn == 1){
 
