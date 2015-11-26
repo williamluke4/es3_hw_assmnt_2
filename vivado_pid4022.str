@@ -1,0 +1,96 @@
+/*
+
+Vivado v2015.2 (64-bit)
+SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+Process ID: 4022
+
+Current time: 	11/26/15 9:04:38 AM GMT
+Time zone: 	Greenwich Mean Time (Europe/London)
+
+OS: Scientific Linux release 7.1 (Nitrogen)
+Version: 3.10.0-229.20.1.el7.x86_64
+Architecture: amd64
+Available processors (cores): 8
+
+DISPLAY: :0
+Screen size: 1920x1200
+Screen resolution (DPI): 96
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_25 64-bit
+Java home: 	/opt/Xilinx/Vivado/2015.2/tps/lnx64/jre
+
+User name: 	s1358286
+User directory: /home/s1358286/Documents/es3_hw_assmnt_2
+User country: 	GB
+User language: 	en
+User locale: 	en_GB
+
+Vivado preferences path: /home/s1358286/.Xilinx/Vivado/2015.2/vivado.ini
+Vivado layouts directory: /home/s1358286/.Xilinx/Vivado/2015.2/layouts/application
+
+GUI allocated memory:	136 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 4,840 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// [GUI Memory]: 40 MB (+39549kb) [00:00:05]
+// [Engine Memory]: 4,840 MB (+4923144kb) [00:00:05]
+selectButton(PAResourceEtoH.GettingStartedView_OPEN_PROJECT, "Open Project"); // l:JideButton (JPanel:JComponent, cl:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_PROJECT
+// HMemoryUtils.trashcanNow. Engine heap size: 4,850 MB. GUI used memory: 20 MB. Current time: 11/26/15 9:04:40 AM GMT
+setFileChooser("/home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.xpr");
+// HOptionPane Warning: 'This project was created with a future version of Vivado. It will be opened in read-only<br>mode for the protection of unrecognized data.<br>Please use 'File | Save Project As...' if you need to alter a copy of this project.<br>The project may or may not open reliably with this version of Vivado.<br>OK to proceed and open the project? (Future Project Version)'
+// cp:P (cl:JFrame):  Open Project : addNotify
+// Opening Vivado Project: /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.xpr. Version: Vivado v2015.3 
+selectButton("PAResourceOtoP.PABaseTab_THIS_PROJECT_WILL_BE_OPENED_IN_READ_ONLY_OK", "OK"); // JButton:AbstractButton (JPanel:JComponent, T:JDialog)
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 48 MB (+5851kb) [00:00:25]
+// [GUI Memory]: 90 MB (+42165kb) [00:00:26]
+// [GUI Memory]: 106 MB (+11621kb) [00:00:27]
+// Tcl Message: open_project /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.xpr 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'C:/Users/Will/Desktop/Assessment_2_Traffic_Light/es3_hw_assmnt_2' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2015.2/data/ip'. 
+// Tcl Message: open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 5976.441 ; gain = 194.605 ; free physical = 249 ; free virtual = 89958 
+// Project name: es3_hw_assmnt_2; location: /home/s1358286/Documents/es3_hw_assmnt_2; part: xc7a35tcpg236-1
+// 'i' command handler elapsed time: 20 seconds
+dismissDialog("Open Project"); // cp:P (cl:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 5,058 MB. GUI used memory: 42 MB. Current time: 11/26/15 9:05:00 AM GMT
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// a:a (cl:JFrame): Critical Messages: addNotify
+// D:ap (cl:JFrame): Project is Read-Only: addNotify
+// Elapsed time: 36 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, D:ap)
+dismissDialog("Project is Read-Only"); // D:ap (cl:JFrame)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // i:a (JPanel:JComponent, a:a)
+dismissDialog("Critical Messages"); // a:a (cl:JFrame)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // R:JideMenu (CommandMenuBar:CommandBar, cl:JFrame)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent Project"); // X:JMenu (JPopupMenu:JComponent, cl:JFrame)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_FILE, "Open Recent File"); // X:JMenu (JPopupMenu:JComponent, cl:JFrame)
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // X:JMenu (JPopupMenu:JComponent, cl:JFrame)
+selectMenuItem(PAResourceCommand.PACommandNames_LAUNCH_HARDWARE, "Launch SDK"); // ab:JMenuItem (JPopupMenu:JComponent, cl:JFrame)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // R:JideMenu (CommandMenuBar:CommandBar, cl:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_LAUNCH_HARDWARE
+// J:ag (cl:JFrame): Launch SDK: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, J:ag)
+dismissDialog("Launch SDK"); // J:ag (cl:JFrame)
+// Tcl Message: launch_sdk -workspace /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf 
+// Tcl Message: INFO: [Vivado 12-393] Launching SDK... INFO: [Vivado 12-417] Running xsdk -workspace /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages. 
+// HMemoryUtils.trashcanNow. Engine heap size: 5,060 MB. GUI used memory: 42 MB. Current time: 11/26/15 9:35:00 AM GMT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,060 MB. GUI used memory: 42 MB. Current time: 11/26/15 10:05:00 AM GMT

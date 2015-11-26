@@ -722,3 +722,16 @@ java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT P
 10:05:20 INFO  : Processor reset is completed for microblaze_0
 10:06:18 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
 10:06:19 INFO  : Processor reset is completed for microblaze_0
+10:18:48 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+10:18:49 INFO  : Processing command line option -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf.
+10:18:49 INFO  : XSDB server has started successfully.
+10:18:50 INFO  : Checking for hwspec changes in the project top_hw_platform_1.
+10:19:54 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+10:19:55 INFO  : XSDB server has started successfully.
+10:19:55 INFO  : Processing command line option -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf.
+10:19:56 INFO  : Checking for hwspec changes in the project top_hw_platform_1.
+10:20:29 INFO  : Processor reset is completed for microblaze_0
+10:51:53 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:51:55 INFO  : Processor reset is completed for microblaze_0
+10:56:24 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:56:25 INFO  : Processor reset is completed for microblaze_0

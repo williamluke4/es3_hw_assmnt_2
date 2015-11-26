@@ -60,13 +60,13 @@ void flash_ped(){
 		else{
 			Ped_Light = GREEN;
 		}
-		display = ped_countdown/10; // To get seconds
     }
 
-    else if (ped_countdown>20 && ped_countdown<=50){
+    else if (ped_countdown>20){
     	Ped_Light = GREEN;
-    	display = ped_countdown/10; // To get seconds
+
     }
+
 
 }
 
@@ -74,9 +74,8 @@ void next_state(){
  //Running every 0.1s
 
     if(TR1_Red == RED && TR2_Red == RED && ped_button == TRUE ){
-    	    //Need a delay of two seconds
     		flash_ped();
-
+            display = ped_countdown/10; // To get seconds
 
             if(ped_countdown == 0){
             	XGpio_DiscreteWrite(&LED_OUT,1, 0);// Leds Turned Off
@@ -180,9 +179,9 @@ int main(){
             		while (pushBtnRightIn == 1){
 
             			pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
-            			XGpio_DiscreteWrite(&LED_OUT,1, 1ko);
+            			XGpio_DiscreteWrite(&LED_OUT,1, 65535);
             			ped_button = TRUE;//Pedestrian Button Activated
-            			ped_countdown = 70;
+            			ped_countdown = 50;
             		}
             	}
 

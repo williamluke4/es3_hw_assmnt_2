@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# updatemem v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# 
+# Start of session at: Thu Nov 26 09:08:53 2015
+# Process ID: 4599
+# Log file: /home/s1358286/Documents/es3_hw_assmnt_2/updatemem.log
+# Journal file: /home/s1358286/Documents/es3_hw_assmnt_2/updatemem.jou
+#-----------------------------------------------------------
+source /opt/Xilinx/SDK/2015.2/scripts/updatemem/main.tcl -notrace

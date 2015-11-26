@@ -1,0 +1,76 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Nov 26 09:04:17 2015
+# Process ID: 4022
+# Log file: /home/s1358286/Documents/es3_hw_assmnt_2/vivado.log
+# Journal file: /home/s1358286/Documents/es3_hw_assmnt_2/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/Will/Desktop/Assessment_2_Traffic_Light/es3_hw_assmnt_2' since last save.
+Scanning sources...
+Finished scanning sources
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirModelSim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirQuesta
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirIES
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirVCS
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirRiviera
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CompiledLibDirActivehdl
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name CreateRefXciForCoreContainers
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name IPUserFilesDir
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name IPStaticSourceDir
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name EnableBDX
+WARNING: [Project 1-231] Project 'es3_hw_assmnt_2.xpr' was created with a future version and may or may not perform reliably with this version of Vivado. It has been opened in read-only mode for the protection of unrecognized data. Use 'File | Save Project As...' if you wish to alter a copy of the project.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2015.2/data/ip'.
+WARNING: [BD 41-1663] The design 'mb_system.bd' is locked for any modification. Locked reason(s):
+* Project read-only. Please run 'save_project_as' before making any change to the bd-design. 
+
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'mb_system.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+mb_system_tier2_xbar_2_0
+mb_system_gpio_vga_hs_0
+mb_system_gpio_p_btn_u_0
+mb_system_gpio_7seg_0
+mb_system_gpio_leds_1
+mb_system_gpio_leds_0
+mb_system_lmb_bram_0
+mb_system_dlmb_bram_if_cntlr_0
+mb_system_gpio_s_switches_0
+mb_system_dlmb_v10_0
+mb_system_xbar_0
+mb_system_gpio_s_switches_1
+mb_system_microblaze_0_0
+mb_system_gpio_p_btn_u_1
+mb_system_axi_gpio_0_0
+mb_system_rst_clk_wiz_1_100M_0
+mb_system_gpio_vga_region_0
+mb_system_gpio_s_switches_3
+mb_system_tier2_xbar_1_0
+mb_system_ilmb_bram_if_cntlr_0
+mb_system_gpio_reg_7_colour_out_0
+mb_system_gpio_p_btn_u_2
+mb_system_axi_uartlite_0_0
+mb_system_axi_intc_0_0
+mb_system_gpio_s_switches_2
+mb_system_tier2_xbar_0_0
+mb_system_mdm_0_0
+mb_system_fit_timer_0_0
+mb_system_gpio_reg_1_colour_out_0
+mb_system_gpio_reg_1_colour_out_1
+mb_system_gpio_reg_1_colour_out_2
+mb_system_gpio_reg_4_colour_out_0
+mb_system_gpio_reg_1_colour_out_3
+mb_system_gpio_reg_3_colour_out_0
+mb_system_ilmb_v10_0
+mb_system_gpio_reg_5_colour_out_0
+mb_system_gpio_reg_9_colour_out_0
+
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 5976.441 ; gain = 194.605 ; free physical = 249 ; free virtual = 89958
+launch_sdk -workspace /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf
+INFO: [Vivado 12-393] Launching SDK...
+INFO: [Vivado 12-417] Running xsdk -workspace /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf
+INFO: [Vivado 12-3157] SDK launch initiated. Please check console for any further messages.
