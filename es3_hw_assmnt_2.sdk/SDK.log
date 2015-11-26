@@ -696,3 +696,29 @@ java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT P
 18:57:09 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
 18:57:10 INFO  : Processor reset is completed for microblaze_0
 20:14:18 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+09:05:52 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+09:05:54 INFO  : XSDB server has started successfully.
+09:05:55 INFO  : Processing command line option -hwspec /home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top.hdf.
+09:09:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:09:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Basys3 210183712058A" && level==0} -index 0' command is executed.
+09:09:07 INFO  : FPGA configured successfully with bitstream "/home/s1358286/Documents/es3_hw_assmnt_2/es3_hw_assmnt_2.sdk/top_hw_platform_0/download.bit"
+09:09:46 INFO  : Processor reset is completed for microblaze_0
+09:53:54 INFO  : Processor reset is completed for microblaze_0
+09:55:18 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+09:55:19 INFO  : Processor reset is completed for microblaze_0
+09:56:34 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+09:56:36 INFO  : Processor reset is completed for microblaze_0
+09:57:09 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+09:57:10 INFO  : Processor reset is completed for microblaze_0
+09:57:29 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+09:57:30 INFO  : Processor reset is completed for microblaze_0
+09:59:19 INFO  : Processor reset is completed for microblaze_0
+09:59:37 INFO  : Processor reset is completed for microblaze_0
+09:59:44 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+09:59:45 INFO  : Processor reset is completed for microblaze_0
+10:00:25 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:00:26 INFO  : Processor reset is completed for microblaze_0
+10:05:19 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:05:20 INFO  : Processor reset is completed for microblaze_0
+10:06:18 INFO  : microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:06:19 INFO  : Processor reset is completed for microblaze_0

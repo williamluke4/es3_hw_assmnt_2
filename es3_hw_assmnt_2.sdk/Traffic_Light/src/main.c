@@ -18,7 +18,8 @@ u8 ped_button = FALSE;
 
 u16 TR1_Red = OFF, TR1_Yellow = OFF, TR1_Green = OFF; //Traffic Light 1
 u16 TR2_Red = OFF, TR2_Yellow = OFF, TR2_Green = OFF; //Traffic Light 2
-u16 Ped_Light = OFF;
+u16 Ped_Light = RED;
+
 volatile u8 interruptCounter = 0;
 volatile u8 interruptServiced = FALSE;
 
@@ -35,7 +36,7 @@ void hwTimerISR(void *CallbackRef){
 
 
 
-        next_state(); //Will run every Second
+        next_state(); //Will run every 0.1
 
         interruptCounter = 0;
 
@@ -48,23 +49,24 @@ void hwTimerISR(void *CallbackRef){
     return;
 }
 void flash_ped(){
-
+	//Will Turn OFF and ON 5 times in the last 2 second the ped light is on
 	if((ped_countdown<=20) && ((ped_countdown%2)==0)){
 
-		if (Ped_Light == OFF)
+		if (Ped_Light == GREEN)
 		{
-			Ped_Light = YELLOW;
+			Ped_Light = OFF;
 
 		}
 		else{
-			Ped_Light = OFF;
+			Ped_Light = GREEN;
 		}
+		display = ped_countdown/10; // To get seconds
     }
-    else if (ped_countdown>20){
+
+    else if (ped_countdown>20 && ped_countdown<=50){
     	Ped_Light = GREEN;
-
+    	display = ped_countdown/10; // To get seconds
     }
-
 
 }
 
@@ -72,14 +74,14 @@ void next_state(){
  //Running every 0.1s
 
     if(TR1_Red == RED && TR2_Red == RED && ped_button == TRUE ){
+    	    //Need a delay of two seconds
     		flash_ped();
-            display = ped_countdown/10; //To get seconds
 
 
             if(ped_countdown == 0){
-            	XGpio_DiscreteWrite(&LED_OUT,1, 0);
+            	XGpio_DiscreteWrite(&LED_OUT,1, 0);// Leds Turned Off
                 ped_button = FALSE;
-                Ped_Light = OFF;
+                Ped_Light = RED;
             }
             ped_countdown = ped_countdown -1;
 
@@ -88,10 +90,10 @@ void next_state(){
 
     else {
     	if((counter%10)==0){
-    		display = 1;
+    		display = 0;
     	}
     	if((counter%20)==0){
-    		display = 2;
+    		display = 1;
     	}
         switch(counter){
                 case 0:// TR1:Yellow
@@ -180,7 +182,7 @@ int main(){
             			pushBtnRightIn = XGpio_DiscreteRead(&P_BTN_RIGHT, 1);
             			XGpio_DiscreteWrite(&LED_OUT,1, 65535);
             			ped_button = TRUE;//Pedestrian Button Activated
-            			ped_countdown = 50;
+            			ped_countdown = 70;
             		}
             	}
 
